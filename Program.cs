@@ -1,61 +1,50 @@
-﻿using System;
+using System;
 
 class Program
 {
     static void Main(string[] args)
     {
-        // 1️⃣ Ask for input if not given
-        Console.Write("Wha   xt should the cow say? ");
-        string message = Console.ReadLine();
+        Console.WriteLine("Welcome to Cow Say!");
 
-        // 2️⃣ Draw the speech bubble
-        string bubble = $"  {new string('=', message.Length)}\n";
-        bubble += $"| {message} |\n";
-        bubble += $"  {new string('=', message.Length)}\n";
+        while (true)
+        {
+            Console.WriteLine("What should the cow say? or (type 'exit' to quit)");
+            Console.Write("You: ");
+            string message = Console.ReadLine() ?? "";
 
-        // 3️⃣ Draw the cow
-        string cow = @"
-        \   ^__^
-         \  (oo)\_______
-            (__)\       )\/\
-                ||----w |
-                ||     ||
-        ";
-
-        // 4️⃣ Print the result
-        Console.WriteLine(bubble + cow);
-
-        // Console.WriteLine("Welcome to Cow Say!");
-
-        // while (true)
-        // {
-        //     Console.WriteLine("What should the cow say? or (type 'exit' to quit)");
-        //     Console.Write("You: ");
-        //     string message = Console.ReadLine() ?? "";
-
-        //     if (string.IsNullOrWhiteSpace(message))
-        //     {
-        //         Console.WriteLine("Cow: hmmm...say something first!");
-        //         continue;
-        //     }
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                Console.WriteLine("Cow: hmmm...say something first!");
+                continue;
+            }
             
-        //     if (message.ToLower() == "exit")
-        //     {
-        //         Console.WriteLine("Cow: Goodbye! Moo!");
-        //         break;
-        //     }
+            if (message.ToLower() == "exit")
+            {
+                Console.WriteLine("Cow: Goodbye! Moo!");
+                break;
+            }
 
-        //     Console.WriteLine("$ Cow says: {message}");
-        //     string cow = @"
-        //     \    ^__^
-        //      \   (oo)\_______
-        //         (._.)\       )~~~(>
-        //              ||----w |
-        //              ||     ||
-        //     ";
+            Console.WriteLine($"Cow says: {message}");
+            string cow = @"
+            \    ^__^
+             \   (oo)\_______
+                (._.)\       )~~~(>
+                     ||----w |
+                     ||     ||
+            ";
 
 
-        //     Console.WriteLine(cow);
-        // }
+            Console.WriteLine(cow);
+            if (args.Length > 0)
+            {
+                Console.WriteLine($"You gave {args.Length} fruits to the cow.");
+                foreach (string fruit in args)
+                {
+                    Console.WriteLine($"Cow eats the {fruit}. Yum!");
+                }
+                Console.WriteLine("Cow: Thank you for the fruits! Moo!\n");
+            }
+            
+        }
     }
 }
