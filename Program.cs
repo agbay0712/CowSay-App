@@ -37,8 +37,9 @@ class Program
             Console.WriteLine(cow);
             if (args.Length > 0)
             {
-                Console.WriteLine($"You gave {args.Length} fruit/s to the cow.");
-                foreach (string fruit in args)
+                string fruit = args.Length == 1 ? "fruit" : "fruits";
+                Console.WriteLine($"You gave {args.Length} {fruit} to the cow.");
+                foreach (string arg in args)
                 {
                     Console.WriteLine($"Cow eats the {fruit}. Yum!");
                 }
